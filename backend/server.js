@@ -4,6 +4,7 @@ const dotenv = require("dotenv");
 const morgan = require("morgan");
 const connectDB = require("./config/db");
 const { routeNotFound, errorHandler } = require("./middlewares/error");
+const userRoutes = require("./routes/user");
 
 // Load environment variables
 dotenv.config();
@@ -21,6 +22,9 @@ app.use(express.json());
 if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
 }
+
+// Routers
+app.use("/api/users", userRoutes);
 
 // Error middlewares
 app.use(routeNotFound);

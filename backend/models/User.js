@@ -17,10 +17,11 @@ const userSchema = new mongoose.Schema(
         "Bitte geben Sie eine gültige E-Mail-Adresse ein",
       ],
     },
-    password: String,
+    password: {
+      type: String,
+    },
     phoneNumber: {
       type: String,
-      required: [true, "Bitte geben sie ihre Telefonnummer ein"],
       match: [
         /[0-9]*\/*(\+49)*[ ]*(\([0-9]+\))*([ ]*(-|–)*[ ]*[0-9]+)*/,
         "Bitte geben Sie eine gültige Telefonnummer ein",
@@ -35,6 +36,7 @@ const userSchema = new mongoose.Schema(
       required: true,
       default: false,
     },
+    verificationToken: String,
     isChef: {
       type: Boolean,
       required: true,
