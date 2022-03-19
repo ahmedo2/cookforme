@@ -100,3 +100,67 @@ exports.verifyEmail = asyncHandler(async (req, res) => {
       "Ihre E-Mail wurde erfolgreich bestätigt. Bitte loggen Sie sich ein.",
   });
 });
+
+// @route   PUT /api/users/forgot-password
+// @desc    Send password reset email with token
+// @access  Public
+exports.forgotPassword = asyncHandler(async (req, res) => {
+  const user = await User.findOne({ email: req.body.email });
+
+  if (!user) {
+    res.status(404);
+    throw new Error("Benutzer nicht gefunden");
+  }
+
+  const resetToken = user.getResetPasswordToken();
+  await user.save({ validateBeforeSave: false });
+
+  const resetUrl = `${req.protocol}://${req.get(
+    "host"
+  )}/reset-password/${resetToken}`;
+
+  try {
+    sendEmail({
+      toEmail: user.email,
+      subject: "CookForMe - Password reset",
+      text: `Ihr Link zum Zurücksetzen des Passworts: ${resetUrl}`,
+    });
+  } catch (err) {
+    user.resetPasswordToken = undefined;
+    user.resetPasswordExpire = undefined;
+    await user.save({ validateBeforeSave: false });
+    res.status(500);
+    throw new Error("E-Mail konnte nicht gesendet werden");
+  }
+
+  res.json({ message: "E-Mail gesendet" });
+});
+
+// @route   PUT /api/users/reset-password/:resetToken
+// @desc    Resets password
+// @access  Public
+exports.resetPassword = asyncHandler(async (req, res) => {
+  // Get hashed token
+  const resetPasswordToken = crypto
+    .createHash("sha256")
+    .update(req.params.resetToken)
+    .digest("hex");
+
+  const user = await User.findOne({
+    resetPasswordToken,
+    resetPasswordExpire: { $gt: Date.now() },
+  });
+
+  if (!user) {
+    res.status(400);
+    throw new Error("Ungültiges oder abgelaufenes Token.");
+  }
+
+  // Set new password
+  user.password = req.body.password;
+  user.resetPasswordToken = undefined;
+  user.resetPasswordExpire = undefined;
+  await user.save();
+
+  res.json({ user, token: generateJWT(user._id) });
+});
