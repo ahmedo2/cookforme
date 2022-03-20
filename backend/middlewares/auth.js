@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken");
 const asyncHandler = require("express-async-handler");
-const User = require("../models/User.model");
+const User = require("../models/User");
 
 // Restrict routes to only logged in users using JWT
 const auth = asyncHandler(async (req, res, next) => {
@@ -63,4 +63,4 @@ const adminOnly = (req, res, next) => {
   }
 };
 
-module.exports = { auth, admin };
+module.exports = { auth, adminOnly, userOnly, chefOnly };
