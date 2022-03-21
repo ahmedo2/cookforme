@@ -1,24 +1,41 @@
-import { ThemeProvider } from "@material-ui/core";
+import { ThemeProvider, Button } from "@material-ui/core";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { Provider } from "react-redux";
+import { SnackbarProvider } from "notistack";
+import Notifier from "./components/notifier/Notifier";
 import SignIn from "./pages/signin/SignIn";
 import SignUp from "./pages/signup/SignUp";
 import HomePage from "./pages/homepage/HomePage";
-import LandingPage from "./components/landingpage/LandingPage";
+import LandingPage from "./pages/landingpage/LandingPage";
 import theme from "./theme";
 import store from "./redux/store";
+import { closeSnackbar } from "./redux/alert/alert.actions";
+
+const snackbarDimissButton = () => (
+  <Button onClick={() => store.dispatch(closeSnackbar())}>dismiss me</Button>
+);
+
+const snackbarPosition = () => ({ vertical: "bottom", horizontal: "right" });
+
 function App() {
   return (
     <ThemeProvider theme={theme}>
       <Provider store={store}>
-        <BrowserRouter>
-          <Switch>
-            <Route exact path="/" component={LandingPage} />
-            <Route exact path="/signin" component={SignIn} />
-            <Route exact path="/signup" component={SignUp} />
-            <Route exact path="/home" component={HomePage} />
-          </Switch>
-        </BrowserRouter>
+        <SnackbarProvider
+          maxSnack={1}
+          action={snackbarDimissButton}
+          anchorOrigin={snackbarPosition()}
+        >
+          <Notifier />
+          <BrowserRouter>
+            <Switch>
+              <Route exact path="/" component={LandingPage} />
+              <Route exact path="/signin" component={SignIn} />
+              <Route exact path="/signup" component={SignUp} />
+              <Route exact path="/home" component={HomePage} />
+            </Switch>
+          </BrowserRouter>
+        </SnackbarProvider>
       </Provider>
     </ThemeProvider>
   );

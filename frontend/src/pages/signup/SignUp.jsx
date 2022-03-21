@@ -61,7 +61,9 @@ export default function SignUp({ history }) {
       return alert("Passwörter stimmen nicht überein");
     }
 
-    dispatch(registerUser({ name, email, password, isChef: role === "chef" }));
+    dispatch(
+      registerUser({ name, email, password, isChef: role === "chef" }, history)
+    );
   };
 
   useEffect(() => {
