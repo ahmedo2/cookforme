@@ -8,6 +8,9 @@ import {
   LOGIN_REQUEST,
   LOGIN_SUCCESS,
   LOGIN_FAIL,
+  VERIFY_REQUEST,
+  VERIFY_SUCCESS,
+  VERIFY_FAIL,
 } from "./userTypes";
 
 export const registerUser = (formData, history) => async (dispatch) => {
@@ -71,6 +74,40 @@ export const loginUser = (formData) => async (dispatch) => {
       type: LOGIN_FAIL,
       payload: errorMsg,
     });
+    dispatch(
+      enqueueSnackbar({
+        message: errorMsg,
+        options: { variant: "error" },
+      })
+    );
+  }
+};
+
+export const verifyAccount = (verificationToken) => async (dispatch) => {
+  try {
+    dispatch({ type: VERIFY_REQUEST });
+
+    await axios.put(`/api/users/verify/${verificationToken}`);
+
+    dispatch({ type: VERIFY_SUCCESS });
+
+    dispatch(
+      enqueueSnackbar({
+        message: "Deine Email wurde verifiziert. Bitte loggen Sie sich ein.",
+        options: { variant: "success" },
+      })
+    );
+  } catch (error) {
+    const errorMsg =
+      error.response && error.response.data.message
+        ? error.response.data.message
+        : error.message;
+
+    dispatch({
+      type: VERIFY_FAIL,
+      payload: errorMsg,
+    });
+
     dispatch(
       enqueueSnackbar({
         message: errorMsg,

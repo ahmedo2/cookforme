@@ -7,6 +7,7 @@ import SignIn from "./pages/signin/SignIn";
 import SignUp from "./pages/signup/SignUp";
 import HomePage from "./pages/homepage/HomePage";
 import LandingPage from "./pages/landingpage/LandingPage";
+import VerifyEmail from "./pages/verifiyemail/VerifyEmail";
 import theme from "./theme";
 import store from "./redux/store";
 import { closeSnackbar } from "./redux/alert/alert.actions";
@@ -30,9 +31,13 @@ function App() {
           <BrowserRouter>
             <Switch>
               <Route exact path="/" component={LandingPage} />
-              <Route exact path="/signin" component={SignIn} />
-              <Route exact path="/signup" component={SignUp} />
-              <Route exact path="/home" component={HomePage} />
+              <Route path="/signin" component={SignIn} />
+              <Route path="/signup" component={SignUp} />
+              <Route path="/home" component={HomePage} />
+              <Route
+                path="/verify/:verificationToken"
+                component={VerifyEmail}
+              />
             </Switch>
           </BrowserRouter>
         </SnackbarProvider>
