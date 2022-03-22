@@ -2,7 +2,7 @@ import {
   ENQUEUE_SNACKBAR,
   CLOSE_SNACKBAR,
   REMOVE_SNACKBAR,
-} from "./alert.types";
+} from "./alertTypes";
 
 const defaultState = {
   notifications: [],

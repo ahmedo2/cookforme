@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
-import Link from "@material-ui/core/Link";
 import Paper from "@material-ui/core/Paper";
 import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
@@ -113,18 +113,16 @@ export default function SignIn({ history }) {
                 color="primary"
                 className={classes.submit}
               >
-                Sign In
+                Anmelden
               </Button>
               <Grid container>
                 <Grid item xs>
-                  <Link href="#" variant="body2">
-                    Forgot password?
+                  <Link to="/forgot" variant="body2">
+                    Passwort vergessen?
                   </Link>
                 </Grid>
                 <Grid item>
-                  <Link href="/signup" variant="body2">
-                    {"Sie haben kein Konto? Anmeldung..."}
-                  </Link>
+                  <Link to="/signup">Sie haben kein Konto? Anmeldung...</Link>
                 </Grid>
               </Grid>
               <Box mt={5}>

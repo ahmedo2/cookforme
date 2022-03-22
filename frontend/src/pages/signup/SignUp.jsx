@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
-import Link from "@material-ui/core/Link";
 import Paper from "@material-ui/core/Paper";
 import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
@@ -19,6 +19,7 @@ import LinearProgress from "@material-ui/core/LinearProgress";
 import { AiOutlineUser } from "react-icons/ai";
 import Avatar from "@material-ui/core/Avatar";
 import { registerUser } from "../../redux/user/userActions";
+import { enqueueSnackbar } from "../../redux/alert/alertActions";
 import useStyles from "./styles";
 
 function Copyright() {
@@ -58,7 +59,12 @@ export default function SignUp({ history }) {
     // console.log(formData);
     e.preventDefault();
     if (password !== confirmPassword) {
-      return alert("Passwörter stimmen nicht überein");
+      return dispatch(
+        enqueueSnackbar({
+          message: "Passwörter stimmen nicht überein",
+          options: { variant: "error" },
+        })
+      );
     }
 
     dispatch(
@@ -182,13 +188,11 @@ export default function SignUp({ history }) {
               </Button>
               <Grid container>
                 <Grid item xs>
-                  <Link href="#" variant="body2">
-                    Forgot password?
-                  </Link>
+                  <Link to="/forgot">Passwort vergessen?</Link>
                 </Grid>
                 <Grid item>
-                  <Link href="/signin" variant="body2">
-                    {"Sie haben bereits ein Konto? Anmelden..."}
+                  <Link to="/signin">
+                    Sie haben bereits ein Konto? Anmelden...
                   </Link>
                 </Grid>
               </Grid>

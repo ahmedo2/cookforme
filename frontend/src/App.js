@@ -8,9 +8,11 @@ import SignUp from "./pages/signup/SignUp";
 import HomePage from "./pages/homepage/HomePage";
 import LandingPage from "./pages/landingpage/LandingPage";
 import VerifyEmail from "./pages/verifiyemail/VerifyEmail";
+import ForgotPassword from "./pages/forgotpassword/ForgotPassword";
+import ResetPassword from "./pages/resetpassword/ResetPassword";
 import theme from "./theme";
 import store from "./redux/store";
-import { closeSnackbar } from "./redux/alert/alert.actions";
+import { closeSnackbar } from "./redux/alert/alertActions";
 
 const snackbarDimissButton = () => (
   <Button onClick={() => store.dispatch(closeSnackbar())}>dismiss me</Button>
@@ -37,6 +39,11 @@ function App() {
               <Route
                 path="/verify/:verificationToken"
                 component={VerifyEmail}
+              />
+              <Route path="/forgot" component={ForgotPassword} />
+              <Route
+                path="/reset-password/:resetToken"
+                component={ResetPassword}
               />
             </Switch>
           </BrowserRouter>

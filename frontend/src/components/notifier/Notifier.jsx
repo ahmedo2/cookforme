@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useSnackbar } from "notistack";
-import { removeSnackbar } from "../../redux/alert/alert";
+import { removeSnackbar } from "../../redux/alert/alertActions";
 
 let displayed = [];
 
