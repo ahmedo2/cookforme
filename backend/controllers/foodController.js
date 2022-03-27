@@ -17,6 +17,8 @@ exports.addFoodItem = asyncHandler(async (req, res) => {
   const { foodName, price, category, tags, description, availableOn } =
     req.body;
 
+  const chef = await User.findById(req.user.id);
+
   const food = await Food.create({
     chef: req.user.id,
     foodName,
@@ -27,6 +29,12 @@ exports.addFoodItem = asyncHandler(async (req, res) => {
     availableOn: JSON.parse(availableOn),
     image: req.file.path,
   });
+
+  if (food) {
+    chef.menu.push(food);
+    await chef.save();
+  }
+
   res.status(201).json({ food });
 });
 
