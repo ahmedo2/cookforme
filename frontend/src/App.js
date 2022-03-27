@@ -10,6 +10,7 @@ import LandingPage from "./pages/landingpage/LandingPage";
 import VerifyEmail from "./pages/verifiyemail/VerifyEmail";
 import ForgotPassword from "./pages/forgotpassword/ForgotPassword";
 import ResetPassword from "./pages/resetpassword/ResetPassword";
+import OnBoarding from "./pages/onboarding/OnBoarding";
 import theme from "./theme";
 import store from "./redux/store";
 import { closeSnackbar } from "./redux/alert/alertActions";
@@ -36,6 +37,7 @@ function App() {
               <Route path="/signin" component={SignIn} />
               <Route path="/signup" component={SignUp} />
               <Route path="/home" component={HomePage} />
+              <Route exact path="/onboarding" component={OnBoarding} />
               <Route
                 path="/verify/:verificationToken"
                 component={VerifyEmail}

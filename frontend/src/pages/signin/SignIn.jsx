@@ -50,7 +50,11 @@ export default function SignIn({ history }) {
 
   useEffect(() => {
     if (user) {
-      history.push("/home");
+      if (user.pincode) {
+        history.push("/home");
+      } else {
+        history.push("/onboarding");
+      }
     }
   }, [history, user]);
 
