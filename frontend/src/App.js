@@ -3,6 +3,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { Provider } from "react-redux";
 import { SnackbarProvider } from "notistack";
 import Notifier from "./components/notifier/Notifier";
+import Navbar from "./components/navbar/Navbar";
 import SignIn from "./pages/signin/SignIn";
 import SignUp from "./pages/signup/SignUp";
 import HomePage from "./pages/homepage/HomePage";
@@ -32,6 +33,7 @@ function App() {
         >
           <Notifier />
           <BrowserRouter>
+            <Navbar />
             <Switch>
               <Route exact path="/" component={LandingPage} />
               <Route path="/signin" component={SignIn} />

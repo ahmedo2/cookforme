@@ -1,5 +1,5 @@
 const asyncHandler = require("express-async-handler");
-const getDay = require("../utils/getDay.utils");
+const getDay = require("../utils/getDay");
 const Food = require("../models/Food");
 const User = require("../models/User");
 
