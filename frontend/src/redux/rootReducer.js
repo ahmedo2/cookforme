@@ -6,6 +6,7 @@ import {
   userOnboardingReducer,
 } from "./user/userReducers";
 import alertReducer from "./alert/alertReducers";
+import { foodAddReducer } from "./food/foodReducers";
 
 export default combineReducers({
   alert: alertReducer,
@@ -13,4 +14,5 @@ export default combineReducers({
   userLogin: userLoginReducer,
   userVerify: userVerifyReducer,
   userOnboarding: userOnboardingReducer,
+  foodAdd: foodAddReducer,
 });

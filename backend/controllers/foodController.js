@@ -81,6 +81,8 @@ exports.getFoodItemsAdvanced = asyncHandler(async (req, res) => {
 exports.addFoodItem = asyncHandler(async (req, res) => {
   const { foodName, price, category, tags, description, availableOn } =
     req.body;
+  const availableOnArray = availableOn.split(",");
+  const tagsArray = tags.split(",");
 
   const chef = await User.findById(req.user.id);
 
@@ -89,9 +91,9 @@ exports.addFoodItem = asyncHandler(async (req, res) => {
     foodName,
     price,
     category,
-    tags: JSON.parse(tags),
+    tags: tagsArray,
     description,
-    availableOn: JSON.parse(availableOn),
+    availableOn: availableOnArray,
     image: req.file.path,
   });
 

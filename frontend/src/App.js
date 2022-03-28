@@ -11,6 +11,7 @@ import LandingPage from "./pages/landingpage/LandingPage";
 import VerifyEmail from "./pages/verifiyemail/VerifyEmail";
 import ForgotPassword from "./pages/forgotpassword/ForgotPassword";
 import ResetPassword from "./pages/resetpassword/ResetPassword";
+import AddFood from "./pages/addfood/AddFood";
 import OnBoarding from "./pages/onboarding/OnBoarding";
 import theme from "./theme";
 import store from "./redux/store";
@@ -49,6 +50,7 @@ function App() {
                 path="/reset-password/:resetToken"
                 component={ResetPassword}
               />
+              <Route path="/addfood" component={AddFood} />
             </Switch>
           </BrowserRouter>
         </SnackbarProvider>
