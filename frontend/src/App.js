@@ -13,6 +13,7 @@ import VerifyEmail from "./pages/verifiyemail/VerifyEmail";
 import ForgotPassword from "./pages/forgotpassword/ForgotPassword";
 import ResetPassword from "./pages/resetpassword/ResetPassword";
 import AddFood from "./pages/addfood/AddFood";
+import CartPage from "./pages/cart/Cart";
 import SearchPage from "./pages/search/Search";
 import OnBoarding from "./pages/onboarding/OnBoarding";
 import theme from "./theme";
@@ -53,6 +54,7 @@ function App() {
                 component={ResetPassword}
               />
               <Route path="/addfood" component={AddFood} />
+              <Route path="/cart" component={CartPage} />
               <Route path="/search" component={SearchPage} />
             </Switch>
             <Footer />
