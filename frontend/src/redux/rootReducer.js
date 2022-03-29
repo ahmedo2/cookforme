@@ -4,10 +4,9 @@ import {
   userLoginReducer,
   userVerifyReducer,
   userOnboardingReducer,
-  foodSearchReducer,
 } from "./user/userReducers";
 import alertReducer from "./alert/alertReducers";
-import { foodAddReducer } from "./food/foodReducers";
+import { foodAddReducer, foodSearchReducer } from "./food/foodReducers";
 
 export default combineReducers({
   alert: alertReducer,

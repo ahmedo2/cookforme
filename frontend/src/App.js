@@ -4,6 +4,7 @@ import { Provider } from "react-redux";
 import { SnackbarProvider } from "notistack";
 import Notifier from "./components/notifier/Notifier";
 import Navbar from "./components/navbar/Navbar";
+import Footer from "./components/footer/Footer";
 import SignIn from "./pages/signin/SignIn";
 import SignUp from "./pages/signup/SignUp";
 import HomePage from "./pages/homepage/HomePage";
@@ -54,6 +55,7 @@ function App() {
               <Route path="/addfood" component={AddFood} />
               <Route path="/search" component={SearchPage} />
             </Switch>
+            <Footer />
           </BrowserRouter>
         </SnackbarProvider>
       </Provider>
