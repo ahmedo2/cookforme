@@ -54,7 +54,8 @@ exports.getFoodItemsAdvanced = asyncHandler(async (req, res) => {
 
   const foods = await Food.find({ ...query })
     .skip(startIndex)
-    .limit(limit);
+    .limit(limit)
+    .populate("chef");
 
   const pagination = {};
 

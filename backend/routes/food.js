@@ -12,7 +12,7 @@ const { auth, chefOnly } = require("../middlewares/auth");
 const upload = require("../middlewares/upload");
 
 router.get("/", getFoodItems);
-router.get("/advanced", getFoodItemsAdvanced);
+router.post("/advanced", getFoodItemsAdvanced);
 router.post("/", auth, chefOnly, upload.single("image"), addFoodItem);
 router.put("/:id", auth, chefOnly, upload.single("image"), updateFoodItem);
 router.delete("/:id", auth, chefOnly, deleteFoodItem);

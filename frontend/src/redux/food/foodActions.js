@@ -1,7 +1,14 @@
 import axios from "axios";
 import { enqueueSnackbar } from "../alert/alertActions";
 
-import { ADD_FOOD_REQUEST, ADD_FOOD_SUCCESS, ADD_FOOD_FAIL } from "./foodTypes";
+import {
+  ADD_FOOD_REQUEST,
+  ADD_FOOD_SUCCESS,
+  ADD_FOOD_FAIL,
+  SEARCH_FOOD_REQUEST,
+  SEARCH_FOOD_SUCCESS,
+  SEARCH_FOOD_FAIL,
+} from "./foodTypes";
 
 export const addFoodItem = (formData) => async (dispatch, getState) => {
   const { userLogin } = getState();
@@ -29,6 +36,48 @@ export const addFoodItem = (formData) => async (dispatch, getState) => {
         : error.message;
 
     dispatch({ type: ADD_FOOD_FAIL, payload: errorMsg });
+
+    dispatch(
+      enqueueSnackbar({
+        message: errorMsg,
+        options: {
+          variant: "error",
+        },
+      })
+    );
+  }
+};
+
+export const searchFood = (search) => async (dispatch, getState) => {
+  const {
+    userLogin: { user },
+  } = getState();
+
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+
+  try {
+    dispatch({ type: SEARCH_FOOD_REQUEST });
+    console.log(search);
+    const { data } = await axios.post(
+      `/api/foods/advanced?search=${search}`,
+      {
+        latitude: user.location.coordinates[1],
+        longitude: user.location.coordinates[0],
+      },
+      config
+    );
+    dispatch({ type: SEARCH_FOOD_SUCCESS, payload: data.foods });
+  } catch (error) {
+    const errorMsg =
+      error.response && error.response.data.message
+        ? error.response.data.message
+        : error.message;
+
+    dispatch({ type: SEARCH_FOOD_FAIL, payload: errorMsg });
 
     dispatch(
       enqueueSnackbar({

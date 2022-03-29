@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import useStyles from "./styles";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
@@ -30,31 +31,12 @@ const HomePage = () => {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
           />
-          <button className={classes.searchButton}>Suche</button>
+          <Link to={`/search?search=${search}`}>
+            <button className={classes.searchButton}>Suche</button>
+          </Link>
         </div>
         <p className={classes.advancedSearch}>Erweiterte Suche</p>
       </div>
-      <Container>
-        <Grid
-          container
-          spacing={4}
-          className={classes.grid}
-          justify="space-between"
-        >
-          <Grid item md={3} sm={4} xs={12}>
-            <FoodCard />
-            <Grid item sm={4} md={3} xs={12}>
-              <FoodCard />
-            </Grid>
-          </Grid>
-          <Grid item sm={4} md={3} xs={12}>
-            <FoodCard />
-          </Grid>
-          <Grid item sm={4} md={3} xs={12}>
-            <FoodCard />
-          </Grid>
-        </Grid>
-      </Container>
     </>
   );
 };

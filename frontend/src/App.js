@@ -12,6 +12,7 @@ import VerifyEmail from "./pages/verifiyemail/VerifyEmail";
 import ForgotPassword from "./pages/forgotpassword/ForgotPassword";
 import ResetPassword from "./pages/resetpassword/ResetPassword";
 import AddFood from "./pages/addfood/AddFood";
+import SearchPage from "./pages/search/Search";
 import OnBoarding from "./pages/onboarding/OnBoarding";
 import theme from "./theme";
 import store from "./redux/store";
@@ -51,6 +52,7 @@ function App() {
                 component={ResetPassword}
               />
               <Route path="/addfood" component={AddFood} />
+              <Route path="/search" component={SearchPage} />
             </Switch>
           </BrowserRouter>
         </SnackbarProvider>
