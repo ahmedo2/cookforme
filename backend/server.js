@@ -6,6 +6,7 @@ const connectDB = require("./config/db");
 const { routeNotFound, errorHandler } = require("./middlewares/error");
 const userRoutes = require("./routes/user");
 const foodRoutes = require("./routes/food");
+const orderRoutes = require("./routes/order.routes");
 
 // Load environment variables
 dotenv.config();
@@ -27,6 +28,7 @@ if (process.env.NODE_ENV === "development") {
 // Routers
 app.use("/api/users", userRoutes);
 app.use("/api/foods", foodRoutes);
+app.use("/api/orders", orderRoutes);
 
 // Error middlewares
 app.use(routeNotFound);
