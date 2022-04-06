@@ -14,6 +14,7 @@ import ForgotPassword from "./pages/forgotpassword/ForgotPassword";
 import ResetPassword from "./pages/resetpassword/ResetPassword";
 import AddFood from "./pages/addfood/AddFood";
 import CartPage from "./pages/cart/Cart";
+import Dashbard from "./pages/dashboard/Dashboard";
 import SearchPage from "./pages/search/Search";
 import OnBoarding from "./pages/onboarding/OnBoarding";
 import theme from "./theme";
@@ -55,6 +56,7 @@ function App() {
               />
               <Route path="/addfood" component={AddFood} />
               <Route path="/cart" component={CartPage} />
+              <Route path="/user-dashboard" component={Dashbard} />
               <Route path="/search" component={SearchPage} />
             </Switch>
             <Footer />

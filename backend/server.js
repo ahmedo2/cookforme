@@ -6,7 +6,7 @@ const connectDB = require("./config/db");
 const { routeNotFound, errorHandler } = require("./middlewares/error");
 const userRoutes = require("./routes/user");
 const foodRoutes = require("./routes/food");
-const orderRoutes = require("./routes/order.routes");
+const orderRoutes = require("./routes/order");
 
 // Load environment variables
 dotenv.config();
