@@ -7,6 +7,8 @@ import {
 } from "./user/userReducers";
 import alertReducer from "./alert/alertReducers";
 import { foodAddReducer, foodSearchReducer } from "./food/foodReducers";
+import { cartReducer } from "./cart/cartReducers";
+import { orderCreateReducer } from "./order/orderReducers";
 
 export default combineReducers({
   alert: alertReducer,
@@ -16,4 +18,6 @@ export default combineReducers({
   userOnboarding: userOnboardingReducer,
   foodAdd: foodAddReducer,
   foodSearch: foodSearchReducer,
+  cart: cartReducer,
+  orderCreate: orderCreateReducer,
 });
