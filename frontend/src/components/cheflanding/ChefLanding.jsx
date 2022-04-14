@@ -6,27 +6,29 @@ import AllCheckOrder from "../../assets/all-check-order.svg";
 import Orders from "../../assets/all-order.svg";
 import useStyles from "./styles";
 
-const ChefLanding = () => {
+const ChefLanding = ({ orders }) => {
   const classes = useStyles();
   return (
     <>
       <Grid container spacing={2}>
         <Grid item md={3}>
           <Card className={classes.card}>
-            <img src={TodaysOrder} />
+            <img alt="" src={TodaysOrder} />
             <Typography className={classes.heading}>
-              Today's total orders
+              heutige Bestellungen
             </Typography>
             <Typography className={classes.number} variant="h4">
-              30
+              {orders &&
+                orders.filter((order) => Date(order.createdAt) === Date())
+                  .length}
             </Typography>
           </Card>
         </Grid>
         <Grid item md={3}>
           <Card className={classes.card}>
-            <img src={UntrackedOrder} />
+            <img alt="" src={UntrackedOrder} />
             <Typography className={classes.heading}>
-              All checked orders
+              Aufträge zu bestätigen
             </Typography>
             <Typography className={classes.number} variant="h4">
               25
@@ -35,21 +37,21 @@ const ChefLanding = () => {
         </Grid>
         <Grid item md={3}>
           <Card className={classes.card}>
-            <img src={AllCheckOrder} />
+            <img alt="" src={AllCheckOrder} />
             <Typography className={classes.heading}>
               Untracted Orders
             </Typography>
             <Typography className={classes.number} variant="h4">
-              5
+              {orders && orders.filter((order) => order.isConfirmed).length}
             </Typography>
           </Card>
         </Grid>
         <Grid item md={3}>
           <Card className={classes.card}>
-            <img src={Orders} />
+            <img alt="" src={Orders} />
             <Typography className={classes.heading}>Total orders</Typography>
             <Typography className={classes.number} variant="h4">
-              600
+              {orders?.length}
             </Typography>
           </Card>
         </Grid>
