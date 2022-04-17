@@ -15,11 +15,15 @@ import ResetPassword from "./pages/resetpassword/ResetPassword";
 import AddFood from "./pages/addfood/AddFood";
 import CartPage from "./pages/cart/Cart";
 import Dashbard from "./pages/dashboard/Dashboard";
+import EditFoodPage from "./pages/editfood/EditFood";
 import SearchPage from "./pages/search/Search";
 import OnBoarding from "./pages/onboarding/OnBoarding";
 import theme from "./theme";
 import store from "./redux/store";
 import { closeSnackbar } from "./redux/alert/alertActions";
+import MyFoodPage from "./pages/myfood/MyFood";
+import EditProfile from "./pages/editprofile/EditProfile";
+import EditPassword from "./pages/editpassword/EditPassword";
 
 const snackbarDimissButton = () => (
   <Button onClick={() => store.dispatch(closeSnackbar())}>dismiss me</Button>
@@ -44,7 +48,7 @@ function App() {
               <Route path="/signin" component={SignIn} />
               <Route path="/signup" component={SignUp} />
               <Route path="/home" component={HomePage} />
-              <Route exact path="/onboarding" component={OnBoarding} />
+              <Route path="/onboarding" component={OnBoarding} />
               <Route
                 path="/verify/:verificationToken"
                 component={VerifyEmail}
@@ -56,8 +60,12 @@ function App() {
               />
               <Route path="/addfood" component={AddFood} />
               <Route path="/cart" component={CartPage} />
-              <Route path="/user-dashboard" component={Dashbard} />
+              <Route path="/dashboard" component={Dashbard} />
               <Route path="/search" component={SearchPage} />
+              <Route path="/edit-food/:id" component={EditFoodPage} />
+              <Route path="/my-food" component={MyFoodPage} />
+              <Route path="/edit-profile" component={EditProfile} />
+              <Route path="/edit-password" component={EditPassword} />
             </Switch>
             <Footer />
           </BrowserRouter>

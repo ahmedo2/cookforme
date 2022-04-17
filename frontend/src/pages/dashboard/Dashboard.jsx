@@ -31,16 +31,24 @@ const UserDashboard = ({ history }) => {
             PROFILE
           </Typography>
           <div className={classes.profileLinkDiv}>
-            <Link>
+            <Link to="/edit-profile">
               <Typography className={classes.profileLink}>
                 Edit Profile
               </Typography>
             </Link>
-            <Link>
+            <Link to="/edit-password">
+              >
               <Typography className={classes.profileLink}>
                 Update Password
               </Typography>
             </Link>
+            {user?.isChef && (
+              <Link to="/my-food">
+                <Typography className={classes.profileLink}>
+                  My food items
+                </Typography>
+              </Link>
+            )}
           </div>
           <Typography className={classes.profileHeader} variant="h4">
             ORDER HISTORY

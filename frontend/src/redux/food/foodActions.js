@@ -8,6 +8,12 @@ import {
   SEARCH_FOOD_REQUEST,
   SEARCH_FOOD_SUCCESS,
   SEARCH_FOOD_FAIL,
+  UPDATE_FOOD_REQUEST,
+  UPDATE_FOOD_SUCCESS,
+  UPDATE_FOOD_FAIL,
+  GET_MY_FOOD_REQUEST,
+  GET_MY_FOOD_SUCCESS,
+  GET_MY_FOOD_FAIL,
 } from "./foodTypes";
 
 export const addFoodItem = (formData) => async (dispatch, getState) => {
@@ -88,4 +94,52 @@ export const searchFood = (search) => async (dispatch, getState) => {
       })
     );
   }
+};
+
+export const getMyFood = () => async (dispatch, getState) => {
+  const { userLogin } = getState();
+  const config = {
+    headers: {
+      Authorization: `Bearer ${userLogin.token}`,
+    },
+  };
+
+  try {
+    dispatch({ type: GET_MY_FOOD_REQUEST });
+
+    const { data } = await axios.get("/api/foods/my", config);
+
+    dispatch({ type: GET_MY_FOOD_SUCCESS, data: data });
+  } catch (error) {
+    const errorMsg =
+      error.response && error.response.data.message
+        ? error.response.data.message
+        : error.message;
+
+    dispatch({ type: GET_MY_FOOD_FAIL, payload: errorMsg });
+
+    dispatch(
+      enqueueSnackbar({
+        message: errorMsg,
+        options: {
+          variant: "error",
+        },
+      })
+    );
+  }
+};
+
+export const updateFood = (formData) => async (dispatch, getState) => {
+  const { userLogin } = getState();
+  const config = {
+    headers: {
+      "Content-Type": "multipart/form-data",
+      Authorization: `Bearer ${userLogin.token}`,
+    },
+  };
+  try {
+    dispatch({ type: UPDATE_FOOD_REQUEST });
+
+    const { data } = await axios.put("");
+  } catch (error) {}
 };

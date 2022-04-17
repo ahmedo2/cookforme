@@ -4,9 +4,14 @@ import {
   userLoginReducer,
   userVerifyReducer,
   userOnboardingReducer,
+  userUpdateReducer,
 } from "./user/userReducers";
 import alertReducer from "./alert/alertReducers";
-import { foodAddReducer, foodSearchReducer } from "./food/foodReducers";
+import {
+  foodAddReducer,
+  foodSearchReducer,
+  getMyFoodReducer,
+} from "./food/foodReducers";
 import { cartReducer } from "./cart/cartReducers";
 import { orderCreateReducer, orderListMyReducer } from "./order/orderReducers";
 
@@ -16,8 +21,10 @@ export default combineReducers({
   userLogin: userLoginReducer,
   userVerify: userVerifyReducer,
   userOnboarding: userOnboardingReducer,
+  userUpdate: userUpdateReducer,
   foodAdd: foodAddReducer,
   foodSearch: foodSearchReducer,
+  myfood: getMyFoodReducer,
   cart: cartReducer,
   orderCreate: orderCreateReducer,
   orderListMy: orderListMyReducer,

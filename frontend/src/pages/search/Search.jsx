@@ -44,12 +44,15 @@ const SearchPage = ({ history }) => {
           <Typography variant="h4" gutterBottom color="primary">
             Ihre Suchergebnisse
           </Typography>
-          <Grid container spacing={4}>
-            {foods.map((food) => (
-              <Grid key={food._id} item md={3} sm={6} xs={12}>
-                <FoodCard food={food} />
-              </Grid>
-            ))}
+          <Grid container spacing={1}>
+            {foods.length > 0
+              ? foods.map((food) => (
+                  <Grid item md={3}>
+                    {console.log(food)}
+                    <FoodCard food={food} />
+                  </Grid>
+                ))
+              : ""}
           </Grid>
         </Container>
       )}

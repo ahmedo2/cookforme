@@ -10,6 +10,7 @@ const {
   getUserProfile,
   deleteUserProfile,
   updatePassword,
+  updateProfile,
 } = require("../controllers/userController");
 
 const { auth } = require("../middlewares/auth");

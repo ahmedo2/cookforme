@@ -154,3 +154,30 @@ exports.deleteFoodItem = asyncHandler(async (req, res) => {
   food = await Food.findByIdAndDelete(req.params.id);
   res.json({ message: "Mahlzeit erfolgreich gelöscht" });
 });
+
+// @route   DELETE /api/foods/:id
+// @desc    Delete( food item
+// @access  Private
+exports.getSingleFoodItem = asyncHandler(async (req, res) => {
+  const food = await Food.findById(req.params.id);
+
+  if (!food) {
+    res.status(404);
+    throw new Error("Dieses Essen gibt es nicht");
+  }
+
+  if (food.chef.toString() !== req.user.id.toString()) {
+    res.status(401);
+    throw new Error("Sie können auf diese Route nicht zugreifen");
+  }
+
+  res.json(food);
+});
+
+// @route   DELETE /api/foods/:id
+// @desc    Delete food item
+// @access  Private
+exports.getMyFoodItems = asyncHandler(async (req, res) => {
+  const foods = await Food.find({ chef: req.user.id });
+  res.json(foods);
+});

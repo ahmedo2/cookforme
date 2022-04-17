@@ -21,6 +21,9 @@ import {
   ONBOARDING_REQUEST,
   ONBOARDING_SUCCESS,
   ONBOARDING_FAIL,
+  EDIT_PASSWORD_REQUEST,
+  EDIT_PASSWORD_SUCCESS,
+  EDIT_PASSWORD_FAIL,
 } from "./userTypes";
 
 export const registerUser = (formData, history) => async (dispatch) => {
@@ -110,6 +113,48 @@ export const onBoarding = (formData) => async (dispatch, getState) => {
     );
   }
 };
+
+export const updatePassword =
+  (currentPassword, newPassword) => async (dispatch, getState) => {
+    const { userLogin } = getState();
+    const config = {
+      headers: {
+        Authorization: `Bearer ${userLogin.token}`,
+      },
+    };
+    try {
+      dispatch({ type: EDIT_PASSWORD_REQUEST });
+
+      const { data } = await axios.put(
+        "/api/users/update-password",
+        { currentPassword, newPassword },
+        config
+      );
+      dispatch({ type: EDIT_PASSWORD_SUCCESS, payload: data });
+      dispatch(
+        enqueueSnackbar({
+          message: "Updated password successfully",
+          options: { variant: "success" },
+        })
+      );
+    } catch (error) {
+      const errorMsg =
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message;
+
+      dispatch({ type: EDIT_PASSWORD_FAIL, payload: errorMsg });
+
+      dispatch(
+        enqueueSnackbar({
+          message: errorMsg,
+          options: {
+            variant: "error",
+          },
+        })
+      );
+    }
+  };
 
 export const loginUser = (formData) => async (dispatch) => {
   const config = {
