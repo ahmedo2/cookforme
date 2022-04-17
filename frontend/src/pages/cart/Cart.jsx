@@ -111,7 +111,9 @@ const CartPage = ({ history }) => {
                           </TableCell>
                           <TableCell>{item.foodName}</TableCell>
                           <TableCell>{item.quantity}</TableCell>
-                          <TableCell>₹{item.price * item.quantity}</TableCell>
+                          <TableCell>
+                            ${(orderPrice + taxPrice).toFixed(2)}
+                          </TableCell>
                           <TableCell>
                             <Box>
                               <button

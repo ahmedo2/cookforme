@@ -8,7 +8,7 @@ import {
 import alertReducer from "./alert/alertReducers";
 import { foodAddReducer, foodSearchReducer } from "./food/foodReducers";
 import { cartReducer } from "./cart/cartReducers";
-import { orderCreateReducer } from "./order/orderReducers";
+import { orderCreateReducer, orderListMyReducer } from "./order/orderReducers";
 
 export default combineReducers({
   alert: alertReducer,
@@ -20,4 +20,5 @@ export default combineReducers({
   foodSearch: foodSearchReducer,
   cart: cartReducer,
   orderCreate: orderCreateReducer,
+  orderListMy: orderListMyReducer,
 });

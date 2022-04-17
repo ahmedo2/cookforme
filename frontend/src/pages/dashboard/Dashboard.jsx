@@ -1,22 +1,27 @@
 import React, { useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { Grid, Typography } from "@material-ui/core";
 import DashboardCard from "../../components/dashboardcard/DashboardCard";
 import UserLanding from "../../components/userlanding/UserLanding";
 import ChefLanding from "../../components/cheflanding/ChefLanding";
 import useStyles from "./styles";
+import { getMyOrders } from "../../redux/order/orderActions";
 
 const UserDashboard = ({ history }) => {
   const classes = useStyles();
 
   const { user } = useSelector((state) => state.userLogin);
+  const { orders, loading } = useSelector((state) => state.orderListMy);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (!user) {
       history.push("/signin");
+    } else {
+      dispatch(getMyOrders(user?.isChef ? "chef" : "user"));
     }
-  }, [history, user]);
+  }, [history, user, dispatch]);
   return (
     <div className={classes.root}>
       {user?.isChef ? <ChefLanding /> : <UserLanding />}
@@ -44,16 +49,22 @@ const UserDashboard = ({ history }) => {
             <Typography className={classes.profileLink}>All Orders</Typography>
           </div>
         </Grid>
-        <Grid md={9} item className={classes.cardsDiv}>
-          <Grid container spacing={3}>
-            <Grid item md={6}>
-              <DashboardCard />
+        {loading ? (
+          <h1>Loading...</h1>
+        ) : (
+          <Grid md={9} item className={classes.cardsDiv}>
+            <Grid container spacing={3}>
+              {orders.map((order) => (
+                <Grid key={order._id} item md={6}>
+                  <DashboardCard order={order} />
+                </Grid>
+              ))}
             </Grid>
             <Grid item md={6}>
               <DashboardCard />
             </Grid>
           </Grid>
-        </Grid>
+        )}
       </Grid>
     </div>
   );
