@@ -21,6 +21,7 @@ router
 
 router.get("/user/my", auth, userOnly, getUserOrders);
 router.get("/chef/my", auth, chefOnly, getChefOrders);
+router.get("/:id", auth, getOrderById);
 
 router.post("/:id/confirm", auth, chefOnly, confirmOrder);
 

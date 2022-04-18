@@ -13,7 +13,13 @@ import {
   getMyFoodReducer,
 } from "./food/foodReducers";
 import { cartReducer } from "./cart/cartReducers";
-import { orderCreateReducer, orderListMyReducer } from "./order/orderReducers";
+import {
+  orderCreateReducer,
+  orderListMyReducer,
+  orderDetailsReducer,
+  orderPayReducer,
+  orderDispatchReducer,
+} from "./order/orderReducers";
 
 export default combineReducers({
   alert: alertReducer,
@@ -28,4 +34,7 @@ export default combineReducers({
   cart: cartReducer,
   orderCreate: orderCreateReducer,
   orderListMy: orderListMyReducer,
+  orderDetails: orderDetailsReducer,
+  orderPay: orderPayReducer,
+  orderDispatch: orderDispatchReducer,
 });

@@ -24,6 +24,7 @@ import { closeSnackbar } from "./redux/alert/alertActions";
 import MyFoodPage from "./pages/myfood/MyFood";
 import EditProfile from "./pages/editprofile/EditProfile";
 import EditPassword from "./pages/editpassword/EditPassword";
+import OrderDetailsPage from "./pages/orderdetails/OrderDetails";
 
 const snackbarDimissButton = () => (
   <Button onClick={() => store.dispatch(closeSnackbar())}>dismiss me</Button>
@@ -61,6 +62,8 @@ function App() {
               <Route path="/addfood" component={AddFood} />
               <Route path="/cart" component={CartPage} />
               <Route path="/dashboard" component={Dashbard} />
+              <Route path="/order/:id" component={OrderDetailsPage} />
+              <Route path="/edit-food/:id" component={EditFoodPage} />
               <Route path="/search" component={SearchPage} />
               <Route path="/edit-food/:id" component={EditFoodPage} />
               <Route path="/my-food" component={MyFoodPage} />
