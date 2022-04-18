@@ -11,6 +11,7 @@ import {
   foodAddReducer,
   foodSearchReducer,
   getMyFoodReducer,
+  getSingleFoodReducer,
 } from "./food/foodReducers";
 import { cartReducer } from "./cart/cartReducers";
 import {
@@ -31,6 +32,7 @@ export default combineReducers({
   foodAdd: foodAddReducer,
   foodSearch: foodSearchReducer,
   myfood: getMyFoodReducer,
+  singleFood: getSingleFoodReducer,
   cart: cartReducer,
   orderCreate: orderCreateReducer,
   orderListMy: orderListMyReducer,
