@@ -34,6 +34,21 @@ export const foodAddReducer = (state = {}, action) => {
   }
 };
 
+export const foodEditReducer = (state = {}, action) => {
+  const { type, payload } = action;
+
+  switch (type) {
+    case UPDATE_FOOD_REQUEST:
+      return { loading: true };
+    case UPDATE_FOOD_SUCCESS:
+      return { loading: false, food: payload, success: true };
+    case UPDATE_FOOD_FAIL:
+      return { loading: false, error: payload };
+    default:
+      return state;
+  }
+};
+
 export const foodSearchReducer = (
   state = { foods: [], loading: false },
   action

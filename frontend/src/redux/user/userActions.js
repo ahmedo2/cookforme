@@ -21,9 +21,16 @@ import {
   ONBOARDING_REQUEST,
   ONBOARDING_SUCCESS,
   ONBOARDING_FAIL,
+  ONBOARDING_RESET,
   EDIT_PASSWORD_REQUEST,
   EDIT_PASSWORD_SUCCESS,
   EDIT_PASSWORD_FAIL,
+  GET_CHEFS_REQUEST,
+  GET_CHEFS_SUCCESS,
+  GET_CHEFS_FAIL,
+  VERIFY_CHEF_REQUEST,
+  VERIFY_CHEF_SUCCESS,
+  VERIFY_CHEF_FAIL,
 } from "./userTypes";
 
 export const registerUser = (formData, history) => async (dispatch) => {
@@ -192,6 +199,74 @@ export const logout = () => (dispatch) => {
   dispatch({ type: LOGOUT });
   localStorage.removeItem("user");
   localStorage.removeItem("token");
+};
+
+export const getAllChefs = () => async (dispatch, getState) => {
+  const { token } = getState().userLogin;
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
+  try {
+    dispatch({ type: GET_CHEFS_REQUEST });
+    const { data } = await axios.get("/api/users/all", config);
+    dispatch({ type: GET_CHEFS_SUCCESS, payload: data.chefs });
+  } catch (error) {
+    const errorMsg =
+      error.response && error.response.data.message
+        ? error.response.data.message
+        : error.message;
+
+    dispatch({ type: GET_CHEFS_FAIL, payload: errorMsg });
+
+    dispatch(
+      enqueueSnackbar({
+        message: errorMsg,
+        options: {
+          variant: "error",
+        },
+      })
+    );
+  }
+};
+
+export const verifyChef = (id) => async (dispatch, getState) => {
+  const { token } = getState().userLogin;
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
+  try {
+    dispatch({ type: VERIFY_CHEF_REQUEST });
+    const { data } = await axios.put(`/api/users/${id}/verify`, {}, config);
+    dispatch({ type: VERIFY_CHEF_SUCCESS, payload: data.chef });
+    dispatch(
+      enqueueSnackbar({
+        message: "This chef is now verified",
+        options: { variant: "success" },
+      })
+    );
+  } catch (error) {
+    const errorMsg =
+      error.response && error.response.data.message
+        ? error.response.data.message
+        : error.message;
+
+    dispatch({ type: VERIFY_CHEF_FAIL, payload: errorMsg });
+
+    dispatch(
+      enqueueSnackbar({
+        message: errorMsg,
+        options: {
+          variant: "error",
+        },
+      })
+    );
+  }
 };
 
 export const verifyAccount = (verificationToken) => async (dispatch) => {

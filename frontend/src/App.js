@@ -23,6 +23,7 @@ import store from "./redux/store";
 import { closeSnackbar } from "./redux/alert/alertActions";
 import MyFoodPage from "./pages/myfood/MyFood";
 import EditProfile from "./pages/editprofile/EditProfile";
+import AdminChefs from "./pages/adminchefs/AdminChefs";
 import EditPassword from "./pages/editpassword/EditPassword";
 import OrderDetailsPage from "./pages/orderdetails/OrderDetails";
 
@@ -69,6 +70,7 @@ function App() {
               <Route path="/my-food" component={MyFoodPage} />
               <Route path="/edit-profile" component={EditProfile} />
               <Route path="/edit-password" component={EditPassword} />
+              <Route path="/admin/chefs" component={AdminChefs} />
             </Switch>
             <Footer />
           </BrowserRouter>

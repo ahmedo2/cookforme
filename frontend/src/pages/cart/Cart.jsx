@@ -153,9 +153,9 @@ const CartPage = ({ history }) => {
               <Grid item md={3}>
                 <Card className={classes.card}>
                   <Box className={classes.chefInfo}>
-                    <Typography variant="h6">Paying to</Typography>
+                    <Typography variant="h6">Ready to</Typography>
                     <Typography variant="h5" color="primary">
-                      CHEF SANJEEV
+                      PLACE ORDER?
                     </Typography>
                   </Box>
                   <div>

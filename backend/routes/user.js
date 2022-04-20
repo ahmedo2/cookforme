@@ -11,11 +11,14 @@ const {
   deleteUserProfile,
   updatePassword,
   updateProfile,
+  getAllChefs,
+  verifyChef,
 } = require("../controllers/userController");
 
-const { auth } = require("../middlewares/auth");
+const { auth, adminOnly } = require("../middlewares/auth");
 const upload = require("../middlewares/upload");
 
+router.get("/all", auth, adminOnly, getAllChefs);
 router.post("/register", registerUser);
 router.post("/login", loginUser);
 router.put("/verify/:verificationToken", verifyEmail);
@@ -32,5 +35,6 @@ router.post(
   onboarding
 );
 router.route("/").get(auth, getUserProfile).delete(auth, deleteUserProfile);
+router.put("/:id/verify", auth, adminOnly, verifyChef);
 
 module.exports = router;

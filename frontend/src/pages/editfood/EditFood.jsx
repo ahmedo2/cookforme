@@ -22,7 +22,7 @@ import {
   updateFood,
 } from "../../redux/food/foodActions";
 
-const EditPage = ({ history, match }) => {
+const EditFoodPage = ({ history, match }) => {
   const { user } = useSelector((state) => state.userLogin);
   const { food, loading } = useSelector((state) => state.singleFood);
 
@@ -336,4 +336,4 @@ const EditPage = ({ history, match }) => {
     </div>
   );
 };
-export default EditPage;
+export default EditFoodPage;

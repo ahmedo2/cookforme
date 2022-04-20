@@ -1,17 +1,22 @@
 import { combineReducers } from "redux";
+
+import alertReducer from "./alert/alertReducers";
+
 import {
   userRegisterReducer,
   userLoginReducer,
   userVerifyReducer,
   userOnboardingReducer,
   userUpdateReducer,
+  chefListReducer,
+  chefVerifyReducer,
 } from "./user/userReducers";
-import alertReducer from "./alert/alertReducers";
+
 import {
   foodAddReducer,
   foodSearchReducer,
+  foodEditReducer,
   getMyFoodReducer,
-  getSingleFoodReducer,
 } from "./food/foodReducers";
 import { cartReducer } from "./cart/cartReducers";
 import {
@@ -21,7 +26,6 @@ import {
   orderPayReducer,
   orderDispatchReducer,
 } from "./order/orderReducers";
-
 export default combineReducers({
   alert: alertReducer,
   userRegister: userRegisterReducer,
@@ -31,8 +35,10 @@ export default combineReducers({
   userUpdate: userUpdateReducer,
   foodAdd: foodAddReducer,
   foodSearch: foodSearchReducer,
+  foodEdit: foodEditReducer,
   myfood: getMyFoodReducer,
-  singleFood: getSingleFoodReducer,
+  chefList: chefListReducer,
+  chefVerify: chefVerifyReducer,
   cart: cartReducer,
   orderCreate: orderCreateReducer,
   orderListMy: orderListMyReducer,

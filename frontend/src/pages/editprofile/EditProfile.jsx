@@ -49,11 +49,14 @@ const EditProfile = ({ history }) => {
 
     const formdata = new FormData();
     formdata.append("pincode", pincode);
+    formdata.append("phoneNumber", phoneNumber);
     if (profilePic) {
       formdata.append("profilePic", profilePic);
     }
     dispatch(onBoarding(formdata));
+    history.push("/dashboard");
   };
+
   return (
     <div>
       <div className={classes.onboardBack}>

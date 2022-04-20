@@ -71,7 +71,7 @@ export default function ForgotPasswordPage({ history }) {
             >
               Submit
             </Button>
-            <Grid container justify="center">
+            <Grid container justifyContent="center">
               <Grid item>
                 <Link to="/signup">Don't have an account? Sign Up</Link>
               </Grid>

@@ -219,7 +219,7 @@ const AddFood = ({ history }) => {
             <Grid
               spacing={2}
               container
-              justify="center"
+              justifyContent="center"
               className={classes.buttonGrid}
             >
               <Grid md={3} item>

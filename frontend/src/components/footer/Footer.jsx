@@ -45,19 +45,29 @@ const Footer = () => {
           <hr className={classes.hr}></hr>
           <Box mt={1}>
             <Typography>
-              <Link className={classes.links}>About</Link>
+              <Link to="#" className={classes.links}>
+                About
+              </Link>
             </Typography>
             <Typography>
-              <Link className={classes.links}>Terms & Conditions</Link>
+              <Link to="#" className={classes.links}>
+                Terms & Conditions
+              </Link>
             </Typography>
             <Typography>
-              <Link className={classes.links}>Privacy Policy</Link>
+              <Link to="#" className={classes.links}>
+                Privacy Policy
+              </Link>
             </Typography>
             <Typography>
-              <Link className={classes.links}>Help</Link>
+              <Link to="#" className={classes.links}>
+                Help
+              </Link>
             </Typography>
             <Typography>
-              <Link className={classes.links}>Contact</Link>
+              <Link to="#" className={classes.links}>
+                Contact
+              </Link>
             </Typography>
           </Box>
         </Grid>
@@ -69,19 +79,29 @@ const Footer = () => {
           <hr className={classes.hr}></hr>
           <Box mt={1}>
             <Typography>
-              <Link className={classes.links}>Lorem Ipsum</Link>
+              <Link to="#" className={classes.links}>
+                Lorem Ipsum
+              </Link>
             </Typography>
             <Typography>
-              <Link className={classes.links}>Lorem Ipsum</Link>
+              <Link to="#" className={classes.links}>
+                Lorem Ipsum
+              </Link>
             </Typography>
             <Typography>
-              <Link className={classes.links}>Lorem Ipsum</Link>
+              <Link to="#" className={classes.links}>
+                Lorem Ipsum
+              </Link>
             </Typography>
             <Typography>
-              <Link className={classes.links}>Lorem Ipsum</Link>
+              <Link to="#" className={classes.links}>
+                Lorem Ipsum
+              </Link>
             </Typography>
             <Typography>
-              <Link className={classes.links}>Lorem Ipsum</Link>
+              <Link to="#" className={classes.links}>
+                Lorem Ipsum
+              </Link>
             </Typography>
           </Box>
         </Grid>

@@ -62,11 +62,17 @@ const UserDashboard = ({ history }) => {
         ) : (
           <Grid md={9} item className={classes.cardsDiv}>
             <Grid container spacing={3}>
-              {orders.map((order) => (
-                <Grid key={order._id} item md={6}>
-                  <DashboardCard order={order} />
-                </Grid>
-              ))}
+              {orders.length === 0 ? (
+                <Typography color="primary" variant="h6">
+                  You have not placed any orders yet
+                </Typography>
+              ) : (
+                orders.map((order) => (
+                  <Grid key={order._id} item md={6}>
+                    <DashboardCard order={order} />
+                  </Grid>
+                ))
+              )}
             </Grid>
             <Grid item md={6}>
               <DashboardCard />

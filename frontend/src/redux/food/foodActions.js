@@ -145,14 +145,14 @@ export const updateFood = (formData, id) => async (dispatch, getState) => {
   };
   try {
     dispatch({ type: UPDATE_FOOD_REQUEST });
-
     const { data } = await axios.put(`/api/foods/${id}`, formData, config);
     dispatch({ type: UPDATE_FOOD_SUCCESS, payload: data });
-
     dispatch(
       enqueueSnackbar({
-        message: "Updated food item successfully",
-        options: { variant: "success" },
+        message: "Updated food item",
+        options: {
+          variant: "success",
+        },
       })
     );
   } catch (error) {

@@ -225,3 +225,21 @@ exports.deleteUserProfile = asyncHandler(async (req, res) => {
   await User.findByIdAndDelete(req.user.id);
   res.json({ message: "Account deleted" });
 });
+
+exports.getAllChefs = asyncHandler(async (req, res) => {
+  const chefs = await User.find({ isChef: true }).sort("-createdAt");
+  res.json({ chefs });
+});
+
+exports.verifyChef = asyncHandler(async (req, res) => {
+  let chef = await User.findById(req.params.id);
+  if (!chef) {
+    res.status(404);
+    throw new Error("Chef not found");
+  }
+
+  chef.chefVerified = true;
+  chef = await chef.save();
+
+  res.json({ chef });
+});

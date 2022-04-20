@@ -11,7 +11,7 @@ const LandingPage = () => {
       <Grid
         container
         className={classes.heroSection}
-        justify="center"
+        justifyContent="center"
         alignItems="center"
       >
         <Grid item md={6} className={classes.heroContent}>
