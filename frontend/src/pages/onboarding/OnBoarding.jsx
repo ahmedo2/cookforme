@@ -107,7 +107,7 @@ const OnBoarding = ({ history }) => {
               onChange={handleChange}
               name="Geheimzahl"
               className={classes.input}
-              InputProps={{ endAdorment: <BiMap /> }}
+              // InputProps={{ endAdorment: <BiMap /> }}
               variant="outlined"
             />
             <br />

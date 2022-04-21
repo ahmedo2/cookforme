@@ -1,9 +1,7 @@
 import { makeStyles } from "@material-ui/core/styles";
 export default makeStyles((theme) => ({
   root: {
-    height: "50vh",
-    width: "50vw",
-    alignItems: "center",
+    height: "100vh",
   },
   image: {
     backgroundImage:
@@ -27,7 +25,7 @@ export default makeStyles((theme) => ({
     backgroundColor: theme.palette.primary.main,
   },
   form: {
-    width: "100%", // Fix IE 11 issue.
+    width: "100%",
     marginTop: theme.spacing(1),
   },
   submit: {

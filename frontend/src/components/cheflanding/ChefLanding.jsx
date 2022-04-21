@@ -8,6 +8,12 @@ import useStyles from "./styles";
 
 const ChefLanding = ({ orders }) => {
   const classes = useStyles();
+  const d = new Date()
+    .toISOString()
+    .replace(/T.*/, "")
+    .split("-")
+    .reverse()
+    .join("-");
   return (
     <>
       <Grid container spacing={2}>
@@ -19,8 +25,14 @@ const ChefLanding = ({ orders }) => {
             </Typography>
             <Typography className={classes.number} variant="h4">
               {orders &&
-                orders.filter((order) => Date(order.createdAt) === Date())
-                  .length}
+                orders.filter(
+                  (order) =>
+                    order.createdAt
+                      .replace(/T.*/, "")
+                      .split("-")
+                      .reverse()
+                      .join("-") === d
+                ).length}
             </Typography>
           </Card>
         </Grid>

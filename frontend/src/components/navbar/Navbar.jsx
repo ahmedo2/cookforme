@@ -18,6 +18,7 @@ import { logout } from "../../redux/user/userActions";
 
 export default function Navigation() {
   const classes = useStyles();
+
   const { user } = useSelector((state) => state.userLogin);
 
   const dispatch = useDispatch();
@@ -36,9 +37,17 @@ export default function Navigation() {
   };
 
   const navItemsRaw = getNavItems({ user, dispatch, logout, classes });
+  // const navItems = user
+  //   ? user.isAdmin
+  //     ? navItemsRaw.admin
+  //     : navItemsRaw.auth
+  //   : navItemsRaw.noAuth;
+
   const navItems = user
     ? user.isAdmin
       ? navItemsRaw.admin
+      : user?.isChef
+      ? navItemsRaw.chef
       : navItemsRaw.auth
     : navItemsRaw.noAuth;
   const navCommon = navItemsRaw.common;
@@ -56,7 +65,7 @@ export default function Navigation() {
             <div style={{ display: "flex", flex: 1 }}>
               <Link to="/">
                 <Typography variant="h6" color="primary">
-                  Cook For Me
+                  HealthyWays
                 </Typography>
               </Link>
             </div>

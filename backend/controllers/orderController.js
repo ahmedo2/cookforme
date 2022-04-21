@@ -57,30 +57,6 @@ exports.placeOrder = asyncHandler(async (req, res) => {
   }
 });
 
-// @route   GET /api/orders/:id
-// @desc    Get order details by ID
-// @access  Private
-exports.getOrderById = asyncHandler(async (req, res) => {
-  const order = await Order.findById(req.params.id).populate([
-    {
-      path: "user",
-      select: "name email",
-    },
-    {
-      path: "chef",
-      select: "name email",
-    },
-  ]);
-
-  // Check if order exists
-  if (order) {
-    res.json(order);
-  } else {
-    res.status(404);
-    throw new Error("Order not found");
-  }
-});
-
 // @route   GET /api/orders/user/my
 // @desc    Get logged in user's orders
 // @access  Private
@@ -215,7 +191,6 @@ exports.payOrder = asyncHandler(async (req, res) => {
     res.status(404);
     throw new Error("Order not found");
   }
-  const { razorpay_payment_id, razorpay_signature } = req.body;
 
   // Validate payment
 

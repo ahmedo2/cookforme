@@ -10,7 +10,7 @@ import {
   RiLogoutCircleLine,
   RiLoginCircleLine,
 } from "react-icons/ri";
-//import useCartCount from '../../hooks/useCartCount.hook';
+
 export const getNavItems = (props) => ({
   common: [
     {
@@ -76,6 +76,40 @@ export const getNavItems = (props) => ({
       icon: <AiOutlineUsergroupDelete fontSize={28} />,
       type: "button",
       href: "/admin/chefs",
+    },
+    {
+      label: "Logout",
+      icon: <RiLogoutCircleLine fontSize={28} />,
+      type: "button",
+      buttonType: "contained",
+      class: props.classes.signUpButton,
+      onClick: () => props.dispatch(props.logout()),
+    },
+  ],
+
+  chef: [
+    {
+      label: (props.user && props.user.name) || "User",
+      icon: <AiOutlineUser fontSize={28} />,
+      showInNavbar: false,
+    },
+    {
+      label: "Dashboard",
+      icon: <RiDashboardLine fontSize={28} />,
+      type: "button",
+      href: "/dashboard",
+    },
+    {
+      label: `Cart`,
+      icon: <RiDashboardLine fontSize={28} />,
+      type: "button",
+      href: "/cart",
+    },
+    {
+      label: `Add Food`,
+      icon: <RiDashboardLine fontSize={28} />,
+      type: "button",
+      href: "/add-food",
     },
     {
       label: "Logout",

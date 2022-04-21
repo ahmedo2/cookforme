@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { Grid, Typography } from "@material-ui/core";
+import { Grid, Typography, CircularProgress } from "@material-ui/core";
 import DashboardCard from "../../components/dashboardcard/DashboardCard";
 import UserLanding from "../../components/userlanding/UserLanding";
 import ChefLanding from "../../components/cheflanding/ChefLanding";
@@ -22,9 +22,14 @@ const UserDashboard = ({ history }) => {
       dispatch(getMyOrders(user?.isChef ? "chef" : "user"));
     }
   }, [history, user, dispatch]);
+
   return (
     <div className={classes.root}>
-      {user?.isChef ? <ChefLanding /> : <UserLanding />}
+      {user?.isChef ? (
+        <ChefLanding orders={orders && orders} />
+      ) : (
+        <UserLanding />
+      )}
       <Grid container>
         <Grid md={3} item className={classes.profileGrid}>
           <Typography className={classes.profileHeader} variant="h4">
@@ -37,7 +42,6 @@ const UserDashboard = ({ history }) => {
               </Typography>
             </Link>
             <Link to="/edit-password">
-              >
               <Typography className={classes.profileLink}>
                 Update Password
               </Typography>
@@ -58,7 +62,7 @@ const UserDashboard = ({ history }) => {
           </div>
         </Grid>
         {loading ? (
-          <h1>Loading...</h1>
+          <CircularProgress style={{ margin: "auto" }} />
         ) : (
           <Grid md={9} item className={classes.cardsDiv}>
             <Grid container spacing={3}>
@@ -73,9 +77,6 @@ const UserDashboard = ({ history }) => {
                   </Grid>
                 ))
               )}
-            </Grid>
-            <Grid item md={6}>
-              <DashboardCard />
             </Grid>
           </Grid>
         )}

@@ -47,10 +47,10 @@ function App() {
             <Navbar />
             <Switch>
               <Route exact path="/" component={LandingPage} />
-              <Route path="/signin" component={SignIn} />
-              <Route path="/signup" component={SignUp} />
-              <Route path="/home" component={HomePage} />
-              <Route path="/onboarding" component={OnBoarding} />
+              <Route exact path="/signin" component={SignIn} />
+              <Route exact path="/signup" component={SignUp} />
+              <Route exact path="/home" component={HomePage} />
+              <Route exact path="/onboarding" component={OnBoarding} />
               <Route
                 path="/verify/:verificationToken"
                 component={VerifyEmail}
@@ -60,12 +60,11 @@ function App() {
                 path="/reset-password/:resetToken"
                 component={ResetPassword}
               />
-              <Route path="/addfood" component={AddFood} />
+              <Route path="/add-food" component={AddFood} />
+              <Route path="/search" component={SearchPage} />
               <Route path="/cart" component={CartPage} />
               <Route path="/dashboard" component={Dashbard} />
               <Route path="/order/:id" component={OrderDetailsPage} />
-              <Route path="/edit-food/:id" component={EditFoodPage} />
-              <Route path="/search" component={SearchPage} />
               <Route path="/edit-food/:id" component={EditFoodPage} />
               <Route path="/my-food" component={MyFoodPage} />
               <Route path="/edit-profile" component={EditProfile} />

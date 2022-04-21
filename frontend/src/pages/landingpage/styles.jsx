@@ -44,6 +44,37 @@ const useStyles = makeStyles((theme) => ({
     width: "125%",
     paddingRight: "1.5rem",
   },
+  aboutContainer: {
+    padding: "4rem 2rem",
+  },
+  icon: {
+    color: theme.palette.primary.main,
+    marginRight: "1rem",
+  },
+  featureBox: {
+    display: "flex",
+  },
+  featureContent: {
+    display: "flex",
+    flexDirection: "column",
+  },
+  featureHeading: {
+    fontWeight: 600,
+  },
+  featureBody: {
+    color: "#898b8a",
+  },
+  timelineContainer: {
+    padding: "4rem 5rem",
+    background: "#fbfbfb",
+    color: "#fff",
+    [theme.breakpoints.down("xs")]: {
+      padding: "4rem 0rem",
+    },
+  },
+  paper: {
+    padding: "0.5rem 1rem",
+  },
 }));
 
 export default useStyles;

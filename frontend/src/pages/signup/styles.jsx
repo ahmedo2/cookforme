@@ -2,20 +2,19 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    height: "50vh",
-    width: "50vw",
+    minHeight: "100vh",
   },
-  // image: {
-  //   backgroundImage:
-  //     "url(https://i.pinimg.com/originals/dc/08/74/dc08748288e1c7d9910ac8078dd87742.jpg)",
-  //   backgroundRepeat: "no-repeat",
-  //   backgroundColor:
-  //     theme.palette.type === "light"
-  //       ? theme.palette.grey[50]
-  //       : theme.palette.grey[900],
-  //   backgroundSize: "cover",
-  //   backgroundPosition: "center",
-  // },
+  image: {
+    backgroundImage:
+      "url(https://i.pinimg.com/originals/dc/08/74/dc08748288e1c7d9910ac8078dd87742.jpg)",
+    backgroundRepeat: "no-repeat",
+    backgroundColor:
+      theme.palette.type === "light"
+        ? theme.palette.grey[50]
+        : theme.palette.grey[900],
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+  },
   paper: {
     margin: theme.spacing(8, 4),
     display: "flex",
