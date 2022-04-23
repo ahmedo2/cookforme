@@ -31,7 +31,7 @@ const MyFoodPage = ({ history }) => {
         <Grid container spacing={4}>
           {foods &&
             foods.map((food) => (
-              <Grid item md={3}>
+              <Grid item md={3} key={food._id}>
                 {console.log(food)}
                 <FoodCard food={food} />
               </Grid>

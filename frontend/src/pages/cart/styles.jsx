@@ -28,7 +28,6 @@ export default makeStyles((theme) => ({
   remove: {
     margin: "0 1rem",
     background: "red",
-    margin: "0 1rem",
     border: "none",
     padding: "0.3rem 0.4rem",
     color: "white",

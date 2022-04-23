@@ -183,8 +183,8 @@ const OrderDetailsPage = ({ history }) => {
                 </TableHead>
                 <TableBody>
                   {order &&
-                    order.foodItems.map((item) => (
-                      <TableRow>
+                    order.foodItems.map((item, key) => (
+                      <TableRow key={key}>
                         <TableCell>
                           <img
                             src={item.food.image}

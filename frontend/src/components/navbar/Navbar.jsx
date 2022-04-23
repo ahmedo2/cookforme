@@ -65,7 +65,7 @@ export default function Navigation() {
             <div style={{ display: "flex", flex: 1 }}>
               <Link to="/">
                 <Typography variant="h6" color="primary">
-                  HealthyWays
+                  Cook For Me
                 </Typography>
               </Link>
             </div>

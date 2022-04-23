@@ -101,7 +101,7 @@ const CartPage = ({ history }) => {
                     </TableHead>
                     <TableBody>
                       {cartItems.map((item) => (
-                        <TableRow>
+                        <TableRow key={item._id}>
                           <TableCell component="th" scope="row">
                             <img
                               className={classes.foodImage}

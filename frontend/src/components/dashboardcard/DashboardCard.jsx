@@ -47,9 +47,9 @@ const DashboardCard = ({ order }) => {
           <Typography variant="h6" className={classes.header}>
             Contents
           </Typography>
-          {order.foodItems.map((item) => (
-            <Typography color="textSecondary">
-              {item.quantity} x {item.food.foodName} - ₹ {item.price}
+          {order.foodItems.map((item, i) => (
+            <Typography color="textSecondary" key={i}>
+              {item.quantity} x {item.food.foodName} - $ {item.price}
             </Typography>
           ))}
         </Box>
